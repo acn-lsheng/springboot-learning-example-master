@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: sso-service
+  redis:
+    host: sso-redis-prepro
+    port: 6379
+    
+eureka:
+  instance:
+    instance-id:  ${spring.cloud.client.ipAddress}:${server.port}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://sso:sso_2018@sso-eureka-prepro:8761/eureka/
+
+rsa:
+  publicKey:  MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCUiaxToKuP+IU4UZ4sg3J5QS0IadGYo/vo3FmWMfIlu6mw4XRX4dPm6Sl/u9rDm4uJYeXwq7OuMd1porRmER4b32RQ/NK3TFx3l+aRNXqoFHrAnJjbjkffvAdTQLBDAE2HXM+IVioxuH7rl/KFf1lbnBhJLyGNBTDOUlihngwwkQIDAQAB
+  privateKey: MIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBAJSJrFOgq4/4hThRniyDcnlBLQhp0Zij++jcWZYx8iW7qbDhdFfh0+bpKX+72sObi4lh5fCrs64x3WmitGYRHhvfZFD80rdMXHeX5pE1eqgUesCcmNuOR9+8B1NAsEMATYdcz4hWKjG4fuuX8oV/WVucGEkvIY0FMM5SWKGeDDCRAgMBAAECgYB6QOXo3rDWCkH7nJGHKZkqW45pAk9URoOroNDLYchfbhm4T5emTWRPBVD2pPLlVDyAkmbisy9sC/akXxoDd8tC+yChxMF7toMBLoC5r4S3CqncZ67qdpbS3CReyO6+xtYACoWctq0KzCkXS6OvLtEn6MSy430dhDhE8ITnwNckwQJBANaJc6XZALF72CvJxaN4tWx+v58rBOtinVAlxzpVBYNeYTrzGagd12aZW+RZT4JRLH8zUeq+thLsL5XClr8m4C0CQQCxPs+4ulegti0EaZqSQxHtBm43hgOQfm9XtGOVJbAC5qZA0PNbqwiWfJUDfPy4eptjh/vNrcPStUQVhITVwCx1AkArvNAQAsKqbHYwzyz029oY6WpFl+6j0nIB8gHA+a5rDuXBr+gOJy9P4noifra/+a6ZrCvKMOFL0E0POiGjjNhtAkBjgnoooiW0StM3WPq5BwK3ahbTAWBa7UEholsOT1xkJI5OcYFPg9SMeGFI1hEkmWFIHf5W2SnJ0I7q7b2OLBhJAkARPGJ57ygDJc2GygTireKMZSRWIa3EcKKSOTYTzZed0XL6wkTd/zNSvPa/YKwXIV2vxSdxlkf3SJCfCqhg5mJG
+
+management:
+  security:
+    enabled: false
+
+access:
+  token:
+    validity:
+      seconds:  600
+
+refresh:
+  token:
+    validity:
+      seconds:  86400
+      
+EOMSAccountUrl: http://10.201.37.56:9208
+EOMSSMSUrl: http://10.201.37.41:7601

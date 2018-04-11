@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: sso-api-gateway
+eureka:
+  instance:
+    instance-id:  ${spring.cloud.client.ipAddress}:${server.port}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://sso:sso_2018@sso-eureka-prepro:8761/eureka/
+  
+zuul:
+  sensitiveHeaders:
+  routes:
+    sso-service:
+      path: /sso/**
+      serviceId: sso-service
+
+management:
+  security:
+    enabled: false
